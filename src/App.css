@@ -28,6 +28,107 @@
   color: #61dafb;
 }
 
+.container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  max-width: 600px;
+  width: 96%;
+}
+
+.navs {
+  background-color: #fff;
+  padding: .5rem;
+  border-radius: .75rem;
+  display: flex;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05);
+  margin-bottom: 1rem;
+}
+
+.navs a {
+  padding: .75rem 1rem;
+  font-size: 1rem;
+  flex: 1 1 auto;
+  color: #444;
+  text-decoration: none;
+}
+
+.navs a.selected {
+  color: #fff;
+  border-radius: .5rem;
+  background-color: rebeccapurple;
+}
+
+.fact {
+  padding: 1.5rem;
+  border-radius: 1rem;
+  background-color: #fff;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05)
+}
+
+.fact p { margin: 0; }
+
+.fact-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.fact-buttons button {
+  margin: 0;
+  border: 0;
+  background-color: #fff;
+  padding: .75rem 1rem;
+  border-radius: .5rem;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05);
+  transition: all .1s ease;
+}
+.fact-buttons button:hover {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.liked-list {
+  padding: 0;
+  margin: 0;
+}
+
+.empty-liked-list {
+  background-color: #fff;
+  padding: 3rem 0;
+  border-radius: .5rem;
+}
+
+.liked-list li {
+  font-size: .875rem;
+  padding: 1rem;
+  padding-left: 1.25rem;
+  border-radius: .5rem;
+  background-color: #fff;
+  display: flex;
+  gap: 1rem;
+  text-align: left;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: .75rem;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05);
+}
+
+.liked-list li button {
+  font-size: .75rem;
+  border: 0;
+  color: #fff;
+  background-color: rgb(154, 39, 39);
+  padding: .375rem .5rem ;
+  border-radius: .25rem;
+}
+
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
