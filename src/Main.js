@@ -1,39 +1,68 @@
 import React, { useEffect, useState } from 'react'
 import axios from "axios";
 import { useDispatch } from 'react-redux';
-import { likeFact } from "./reduxStuff";
+import { saveAktivite } from "./reduxStuff";
+
+
+
 
 export default function Main() {
-  const [fact, setFact] = useState("");
-  const myDispatch = useDispatch();
+  const [aktivite, setAktivite] = useState("");
 
-  function factGetir() {
+  const [participants, setParticipants] = useState("")
+
+
+  const url = `https://www.boredapi.com/api/activity?participants=`;
+
+  function aktiviteGetir(kisi) {
     axios
-      .get("https://catfact.ninja/fact")
-      .then(response => {
-        if (response.status === 200) {
-          setFact(response.data.fact)
-        }
+      .get(url+kisi)
+      .then(res => {
+        console.log(res.data)
+        setAktivite(res.data.activity)
+
       })
   }
 
-  useEffect(() => {
-    factGetir();
-  }, []);
+  const myDispatch = useDispatch();
 
-  function handleBegen() {
-    myDispatch(likeFact(fact));
+  function handleKaydet() {
+    myDispatch(saveAktivite(aktivite));
   }
 
+  useEffect(() => {
+    aktiviteGetir(1);
+  }, []);
+
+  const handleChange = (e) => {
+
+    setParticipants(e.target.value)
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    aktiviteGetir(participants);
+
+  }
   return (
     <div>
-      <div className='fact'>
-        <p>{fact}</p>
-      </div>
-      <div className='fact-buttons'>
-        <button onClick={handleBegen}>Like</button>
-        <button onClick={factGetir}>New Item</button>
-      </div>
+      <form onSubmit={handleSubmit} >
+
+
+        <p>Aktivite kaç kişilik olsun?</p>
+
+        <input name="kisi" type='text' value={participants} onChange={handleChange}
+        />
+
+        <button>Bul</button>
+
+      </form>
+
+
+
+
+      <button onClick={handleKaydet}>Bunu kaydet</button>
     </div>
   )
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import { Switch, Route, NavLink } from "react-router-dom";
 import Main from "./Main";
-import Liked from './Liked';
+import Kaydedilen from './Kaydedilen';
 
 function App() {
 
@@ -11,12 +11,15 @@ function App() {
       <div className="container">
         <section className="content">
           <nav className='navs'>
-            <NavLink className="menumuz" activeClassName="selected" to="/" exact>Random</NavLink>
-            <NavLink className="menumuz" activeClassName="selected" to="/liked">Likes</NavLink>
+            <NavLink className="menumuz" activeClassName="selected" to="/" exact>Aktivite Getir</NavLink>
+           
+            <NavLink className="menumuz" activeClassName="selected" to="/saved">Kaydedilen</NavLink>
           </nav>
+        
           <Switch>
             <Route exact path="/" component={Main} />
-            <Route path="/liked" component={Liked} />
+           
+            <Route path="/saved" component={Kaydedilen} />
           </Switch>
         </section>
       </div>

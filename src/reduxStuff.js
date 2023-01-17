@@ -1,50 +1,52 @@
 import { createStore } from "redux";
 
 const baslangicVerisi = {
-  likedFacts: []
+  saveAktivite: []
 };
 
-const LIKE = "like";
-const DISLIKE = "dislike";
+const SAVE = "save";
+const DELETE = "dislike";
+
 
 // initial state
 // reducer
 
 const myReducer = (state = baslangicVerisi, eylem) => {
   switch (eylem.type) {
-    case LIKE:
+    case SAVE:
       return {
         ...state,
-        likedFacts: [...state.likedFacts, eylem.payload]
+        saveAktivite: [...state.saveAktivite, eylem.payload]
       }
-    case DISLIKE:
-      const newLikeds = state.likedFacts.filter(item => item.id !== eylem.payload);
-      return {
-        ...state,
-        likedFacts: newLikeds
-      }
-
+      case DELETE:
+        const newLikeds = state.saveAktivite.filter(item => item.id !== eylem.payload);
+        return {
+          ...state,
+          saveAktivite: newLikeds
+        }
+  
     default:
       return state;
   }
 }
 
-export function likeFact(fact) {
+export function saveAktivite(aktivite) {
   return {
-    type: LIKE,
+    type: SAVE,
     payload: {
-      id: Date.now(),
-      yazi: fact
+      ...aktivite,id: Date.now()
+      
     }
   }
 }
-
-export function dislikeFact(factId) {
-  return {
-    type: DISLIKE,
-    payload: factId
+export function deleteAktivite(aktiviteId) {
+    return {
+      type: DELETE,
+      payload: aktiviteId
+    }
   }
-}
+
+
 
 
 
